@@ -1,1 +1,3 @@
 *.pyc
+flask
+zappa_settings.json
