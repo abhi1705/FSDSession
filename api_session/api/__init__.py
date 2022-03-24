@@ -6,6 +6,8 @@ from flask_swagger_ui import get_swaggerui_blueprint
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, session, sessionmaker
 from api.views.results import results_blueprint
+from api.views.json_results_v1 import api_blueprint as api_blueprint_v1
+from api.views.json_results_v2 import api_blueprint as api_blueprint_v2
 from api.models.model import Base
 
 
@@ -35,6 +37,8 @@ SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(SWAGGER_URL,
 
 app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
 app.register_blueprint(results_blueprint)
+app.register_blueprint(api_blueprint_v1)
+app.register_blueprint(api_blueprint_v2)
 
 
 def on_exit():

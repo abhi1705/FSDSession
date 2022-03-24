@@ -38,7 +38,3 @@ def predict():
     model = pickle.load(open(modeloutput, "rb"))
     df['Class'] = model.predict(df[rawfields])
     return render_template("index.html", prediction_text = df.to_html())
-
-
-
-
