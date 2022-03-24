@@ -36,6 +36,7 @@ SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(SWAGGER_URL,
 app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
 app.register_blueprint(results_blueprint)
 
+
 def on_exit():
     engine.dispose()
     print("Exit Flask application")
@@ -49,3 +50,8 @@ def before_request():
 @app.teardown_request
 def close_connection(error):
     g.session.close()
+
+
+
+
+

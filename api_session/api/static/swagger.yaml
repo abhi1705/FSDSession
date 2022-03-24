@@ -10,7 +10,7 @@ info:
     name: Apache 2.0
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 tags:
-  - name: results
+  - name: usecase
     description: Accessing Predcition Results
     externalDocs:
       description: Find out more
@@ -23,27 +23,16 @@ tags:
 schemes:
   - http
 paths:
-  /results/results_by_class:
-    post:
+  /usecase/get_data:
+    get:
       tags:
         - results
       summary: Get all predcition for a particular class
       x-swagger-router-controller: SampleController
       description: ""
       operationId: getResultClass
-      consumes:
-        - application/json
-        - application/xml
       produces:
-        - application/xml
-        - application/json
-      parameters:
-        - in: body
-          name: body
-          description: Class name to extract data
-          required: false
-          schema:
-            $ref: "#/definitions/Book"
+        - text/html
       responses:
         "200":
           description: successful operation
@@ -53,7 +42,7 @@ paths:
           description: Invalid ID supplied
         "404":
           description: Class not found
-  "/results/get_results/{id}":
+  "/usecase/get_results/{id}":
     get:
       tags:
         - results

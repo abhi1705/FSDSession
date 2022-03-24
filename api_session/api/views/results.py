@@ -3,6 +3,7 @@ from flask import abort, make_response
 import json
 import pickle
 import pandas as pd
+from sqlalchemy import table
 from api.models.model import Results
 from development.common_util.config import modeloutput, rawfields
 
@@ -37,4 +38,7 @@ def predict():
     model = pickle.load(open(modeloutput, "rb"))
     df['Class'] = model.predict(df[rawfields])
     return render_template("index.html", prediction_text = df.to_html())
+
+
+
 
