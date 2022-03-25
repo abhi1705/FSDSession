@@ -28,8 +28,9 @@ def get_data():
 
 @results_blueprint.route('/get_results/<id>', methods=['GET'])
 def get_results(id):
-    result = g.session.get(Results, id)
+    result = g.session.query(Results, id)
     return make_response(jsonify(result.as_dict())), 200
+
 
 @results_blueprint.route('/predict', methods=['GET'])
 def predict():
@@ -39,6 +40,16 @@ def predict():
     df['Class'] = model.predict(df[rawfields])
     return render_template("index.html", prediction_text = df.to_html())
 
+
+@results_blueprint.route('/predict_new', methods=['POST'])
+def predict_new():
+    print(str(request.get_json()))
+    data = request.get_json()
+    data_predict = [[data[i] for i in rawfields]]
+    print(data)
+    model = pickle.load(open(modeloutput, "rb"))
+    data['Class'] = model.predict(data_predict)[0]
+    return make_response(jsonify(data)), 200
 
 
 
