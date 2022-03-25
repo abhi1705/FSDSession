@@ -15,4 +15,5 @@ def train_model():
         return make_response(jsonify("'method' not specified")), 400
     else:
         method = request.json['method']
+    # TODO - train model
     return make_response(jsonify(f"Retraining Model using '{method}'...")), 200
