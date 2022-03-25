@@ -1,6 +1,6 @@
 import os
 import atexit
-from flask import Flask, config, g, send_from_directory, render_template
+from flask import Flask, config, g, send_from_directory, render_template, make_response
 from api.resources.config import *
 from flask_swagger_ui import get_swaggerui_blueprint
 from sqlalchemy import create_engine
@@ -13,6 +13,9 @@ from api.models.model import Base
 
 app = Flask(__name__, template_folder='templates')
 
+@app.route('/health', methods=['GET', 'POST'])
+def health():
+    return make_response("Healthy!"), 200
 
 @app.route('/hello/', methods=['GET', 'POST'])
 def welcome():
