@@ -38,7 +38,7 @@ SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(SWAGGER_URL,
 app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
 app.register_blueprint(results_blueprint)
 app.register_blueprint(api_blueprint_v1)
-app.register_blueprint(api_blueprint_v2)
+# app.register_blueprint(api_blueprint_v2)
 
 
 def on_exit():
